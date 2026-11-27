@@ -30,19 +30,19 @@
     .sticky-header {
       position: sticky; top: 0; z-index: 40; background: var(--surface);
       border-bottom: 1px solid var(--border); padding: 0.5rem 0.75rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 0.45rem; box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; box-shadow: var(--shadow);
     }
-    .header-right, .header-left { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .header-right, .header-left { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
     .brand-pill { font-weight: 800; font-size: 0.84rem; padding: 0.35rem 0.6rem; border-radius: 10px; background: var(--primary-soft); color: var(--primary); white-space: nowrap; }
     .countdown-pill { font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.6rem; border-radius: 999px; background: var(--amber-soft); color: var(--amber); white-space: nowrap; }
     .icon-btn, .hdr-btn {
       min-height: 36px; padding: 0.3rem 0.65rem; border-radius: 10px;
       border: 1px solid var(--border); background: var(--surface-alt);
-      font-weight: 700; font-size: 0.83rem; cursor: pointer;
+      font-weight: 700; font-size: 0.82rem; cursor: pointer;
       display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap;
     }
     .hdr-btn.active { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
-    .app-main { max-width: 1100px; margin: 0 auto; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .app-main { max-width: 1100px; margin: 0 auto; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
     .carousel-wrap { display: flex; align-items: center; gap: 0.4rem; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0.15rem 0; }
     .carousel-wrap::-webkit-scrollbar { display: none; }
     .chip {
@@ -55,10 +55,10 @@
     .chip.status-mastered.active { background: var(--green); color: #fff; border-color: var(--green); }
     .chip.status-review.active { background: var(--amber); color: #fff; border-color: var(--amber); }
     .tools-row { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
+    .bulk-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; padding: 0.45rem 0.65rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .bulk-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-left: 0.25rem; }
     .search-input { flex: 1 1 200px; min-height: 40px; padding: 0.4rem 0.85rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.92rem; }
-    .mikud-accordion { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem; display: none; flex-direction: column; gap: 0.75rem; font-size: 0.88rem; }
-    .mikud-accordion.open { display: flex; }
-    .mikud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.65rem; }
+    .mikud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.65rem; font-size: 0.88rem; }
     .mikud-col { background: var(--surface-alt); padding: 0.7rem; border-radius: 10px; }
     .mikud-col h4 { margin: 0 0 0.4rem; font-size: 0.92rem; }
     .m-in { color: var(--green); margin-bottom: 0.3rem; }
@@ -80,19 +80,23 @@
     .track-btn { flex: 1; min-height: 38px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-weight: 700; font-size: 0.84rem; cursor: pointer; }
     .track-btn.mastered.active { background: var(--green-soft); color: var(--green); border-color: var(--green); }
     .track-btn.review.active { background: var(--amber-soft); color: var(--amber); border-color: var(--amber); }
-    .help-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .help-btn { min-height: 36px; padding: 0.25rem 0.7rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-alt); font-size: 0.83rem; font-weight: 600; cursor: pointer; }
+    .help-row { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .help-btn { min-height: 36px; padding: 0.25rem 0.65rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-alt); font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; }
     .help-btn.open { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; flex-shrink: 0; }
     .drawer { display: none; padding: 0.75rem; border-radius: 10px; font-size: 0.9rem; line-height: 1.6; border: 1px solid var(--border); }
     .drawer.open { display: block; }
     .drawer-hint { background: var(--amber-soft); }
     .drawer-kw { background: var(--primary-soft); }
+    .drawer-draft { background: var(--surface-alt); border-right: 3px solid var(--primary); }
     .drawer-ans { background: var(--surface-alt); border-right: 3px solid var(--green); white-space: pre-line; }
+    .draft-ta { width: 100%; min-height: 82px; padding: 0.55rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); font-size: 0.9rem; resize: vertical; margin-top: 0.35rem; }
+    .compare-box { background: var(--primary-soft); border: 1px solid var(--primary); border-radius: 8px; padding: 0.6rem; margin-bottom: 0.65rem; white-space: pre-line; }
     .kw-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
     .kw-pill { background: var(--surface); border: 1px solid var(--border); padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
     .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
     .modal-backdrop.open { display: flex; }
-    .modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; max-width: 620px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
     .modal-head { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem; }
     .modal-title { margin: 0; font-size: 1.15rem; font-weight: 800; }
     .close-circle { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface-alt); font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; }
@@ -109,7 +113,7 @@
 
     @media print {
       body { background: #fff !important; color: #000 !important; }
-      .sticky-header, .carousel-wrap, .tools-row, .mikud-accordion, .isolation-banner,
+      .sticky-header, .carousel-wrap, .tools-row, .bulk-row, .isolation-banner,
       .track-row, .help-row, .sim-bar, .modal-backdrop, .hdr-btn { display: none !important; }
       .print-header { display: block !important; border-bottom: 2px solid #000; padding-bottom: 0.5rem; margin-bottom: 1rem; }
       .app-main { max-width: 100%; padding: 0; }
@@ -126,6 +130,7 @@
       <span class="brand-pill">041381</span>
       <button type="button" class="hdr-btn" onclick="openQotdModal()">שאלת היום 🎲</button>
       <button type="button" class="hdr-btn" id="btn-sim-mode" onclick="toggleSimMode()">סימולטור 📝</button>
+      <button type="button" class="hdr-btn" onclick="openMikudModal()">מיקוד תשפ"ז 📋</button>
     </div>
     <div class="header-left">
       <span class="countdown-pill" id="countdown-pill">⏳ -- ימים לבגרות</span>
@@ -148,27 +153,6 @@
         <button type="button" class="chip status-mastered" id="iso-mastered-btn" onclick="toggleIsolation('mastered')">✅ 0% שליטה</button>
         <button type="button" class="chip status-review" id="iso-review-btn" onclick="toggleIsolation('review')">🔖 0% חזרה</button>
         <button type="button" class="chip" id="mikud-only-chip" onclick="toggleMikudOnly()">🟢 רק במיקוד תשפ"ז</button>
-        <button type="button" class="chip" id="mikud-acc-btn" onclick="toggleMikudAccordion()">מיקוד תשפ"ז ▼</button>
-      </div>
-
-      <div class="mikud-accordion" id="mikud-accordion">
-        <div class="mikud-grid">
-          <div class="mikud-col">
-            <h4>💪 פיזיולוגיה ותורת הכושר</h4>
-            <div class="m-in">🟢 <strong>נשאר במיקוד:</strong> לב וכלי דם, מערכת הנשימה, מסלולי אנרגיה, שרירי השלד ומישורי תנועה, עצבים, הרכב גוף, תורת האימון.</div>
-            <div class="m-out">🔴 <strong>ירד במיקוד:</strong> מחלות לב כליליות ויתר לחץ דם, נפחי ריאה דינמיים (MVV/FEV1), מחזור כלילי במנוחה, סינפסה (אצטילכולין), כיווץ איזוקינטי.</div>
-          </div>
-          <div class="mikud-col">
-            <h4>🧠 פסיכולוגיה של הספורט</h4>
-            <div class="m-in">🟢 <strong>נשאר במיקוד:</strong> פרויד, אדלר, מוחצנות/מופנמות ומורגן, מוטיבציה והצבת מטרות, לחץ עוררות וחרדה (U הפוך, סלייה, חיסון, הרפיה/ביופידבק).</div>
-            <div class="m-out">🔴 <strong>ירד במיקוד:</strong> אריקסון, רוג'רס, מאסלו, סקינר, האל וספנס, שלדון, קאטל (16PF), פרופיל הר הקרח, חרדה קוגניטיבית, תפקידי פסיכולוג ספורט.</div>
-          </div>
-          <div class="mikud-col">
-            <h4>🏛️ תולדות החינוך הגופני</h4>
-            <div class="m-in">🟢 <strong>נשאר במיקוד (מהמאגר הקיים):</strong> המכביות (עמ' 19–25) וישראל בתנועה האולימפית (עמ' 51–67).</div>
-            <div class="m-out">🔴 <strong>לא במיקוד / ספר חדש:</strong> יוון העתיקה, נצרות ואסלאם, הפילוג מכבי/הפועל ביישוב (2017-1ב, 2018-1ב), ושאלות הנשים בספורט מהספר הישן.</div>
-          </div>
-        </div>
       </div>
 
       <div class="tools-row">
@@ -176,6 +160,15 @@
         <span class="tag" id="results-count">0 שאלות</span>
         <button type="button" class="hdr-btn" onclick="printBank(false)">🖨️ הדפס שאלות</button>
         <button type="button" class="hdr-btn" onclick="printBank(true)">🖨️ הדפס + מחוונים</button>
+      </div>
+
+      <!-- כפתורים ראשיים לפתיחה/סגירה גלובלית -->
+      <div class="bulk-row">
+        <span class="bulk-label">פתח/סגור לכולם:</span>
+        <button type="button" class="hdr-btn" id="bulk-hint" onclick="toggleBulk('hint')">💡 רמז</button>
+        <button type="button" class="hdr-btn" id="bulk-kw" onclick="toggleBulk('kw')">🔑 מילות מפתח</button>
+        <button type="button" class="hdr-btn" id="bulk-ans" onclick="toggleBulk('ans')">📖 מחוון רשמי מלא</button>
+        <button type="button" class="hdr-btn" id="bulk-draft" onclick="toggleBulk('draft')">✏️ טיוטה</button>
       </div>
 
       <div class="isolation-banner hidden" id="isolation-banner">
@@ -227,6 +220,37 @@
     </section>
   </main>
 
+  <!-- MIKUD MODAL -->
+  <div class="modal-backdrop" id="mikud-modal" onclick="if(event.target===this) closeMikudModal()">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mikud-modal-title">
+      <div class="modal-head">
+        <h3 class="modal-title" id="mikud-modal-title">מיקוד בחינת הבגרות תשפ"ז (2027) 📋</h3>
+        <button type="button" class="close-circle" onclick="closeMikudModal()" aria-label="סגור">✕</button>
+      </div>
+      <div class="mikud-grid">
+        <div class="mikud-col">
+          <h4>💪 פיזיולוגיה ותורת הכושר</h4>
+          <div class="m-in">🟢 <strong>נשאר במיקוד:</strong> לב וכלי דם, מערכת הנשימה, מסלולי אנרגיה, שרירי השלד ומישורי תנועה, עצבים, הרכב גוף, תורת האימון.</div>
+          <div class="m-out">🔴 <strong>ירד במיקוד:</strong> מחלות לב כליליות ויתר לחץ דם, נפחי ריאה דינמיים (MVV/FEV1), מחזור כלילי במנוחה, סינפסה (אצטילכולין), כיווץ איזוקינטי.</div>
+        </div>
+        <div class="mikud-col">
+          <h4>🧠 פסיכולוגיה של הספורט</h4>
+          <div class="m-in">🟢 <strong>נשאר במיקוד:</strong> פרויד, אדלר, מוחצנות/מופנמות ומורגן, מוטיבציה והצבת מטרות, לחץ עוררות וחרדה (U הפוך, סלייה, חיסון, הרפיה/ביופידבק).</div>
+          <div class="m-out">🔴 <strong>ירד במיקוד:</strong> אריקסון, רוג'רס, מאסלו, סקינר, האל וספנס, שלדון, קאטל (16PF), פרופיל הר הקרח, חרדה קוגניטיבית, תפקידי פסיכולוג ספורט.</div>
+        </div>
+        <div class="mikud-col">
+          <h4>🏛️ תולדות החינוך הגופני</h4>
+          <div class="m-in">🟢 <strong>נשאר במיקוד (מהמאגר הקיים):</strong> המכביות (עמ' 19–25) וישראל בתנועה האולימפית (עמ' 51–67).</div>
+          <div class="m-out">🔴 <strong>לא במיקוד / ספר חדש:</strong> יוון העתיקה, נצרות ואסלאם, הפילוג מכבי/הפועל ביישוב (2017-1ב, 2018-1ב), ושאלות הנשים בספורט מהספר הישן.</div>
+        </div>
+      </div>
+      <div class="modal-foot" style="justify-content:flex-end;">
+        <button type="button" class="hdr-btn active" onclick="closeMikudModal()">סגור</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QOTD MODAL -->
   <div class="modal-backdrop" id="qotd-modal" onclick="if(event.target===this) closeQotdModal()">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="qotd-modal-title">
       <div class="modal-head">
@@ -240,9 +264,11 @@
         <button type="button" class="help-btn" id="qotd-btn-hint" onclick="toggleQotdHelp('hint')">💡 רמז</button>
         <button type="button" class="help-btn" id="qotd-btn-kw" onclick="toggleQotdHelp('kw')">🔑 מילות מפתח</button>
         <button type="button" class="help-btn" id="qotd-btn-ans" onclick="toggleQotdHelp('ans')">📖 מחוון רשמי מלא</button>
+        <button type="button" class="help-btn" id="qotd-btn-draft" onclick="toggleQotdHelp('draft')">✏️ טיוטה <span id="qotd-draft-dot"></span></button>
       </div>
       <div class="drawer drawer-hint" id="qotd-box-hint"></div>
       <div class="drawer drawer-kw" id="qotd-box-kw"></div>
+      <div class="drawer drawer-draft" id="qotd-box-draft"></div>
       <div class="drawer drawer-ans" id="qotd-box-ans"></div>
       <div class="modal-foot">
         <button type="button" class="hdr-btn" onclick="pickQotd(true)">🎲 החלף שאלה</button>
@@ -299,20 +325,26 @@
     };
     const YEARS = ['all','2026','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016','2015'];
 
-    let state = { theme: 'light', domain: 'all', qType: 'all', topic: 'all', year: 'all', mikudOnly: false, isolation: null, search: '', statusMap: {}, simMode: false };
+    let state = { theme: 'light', domain: 'all', qType: 'all', topic: 'all', year: 'all', mikudOnly: false, isolation: null, search: '', statusMap: {}, drafts: {}, simMode: false };
+    let bulkOpen = { hint: false, kw: false, ans: false, draft: false };
     let qotdItem = null;
     let simType = 'full', simSections = [], simPicked = {}, simGrades = {}, simDrafts = {}, simSubmitted = false, simTimerInt = null, simSecs = 90 * 60;
 
     function loadState() {
       try {
         const raw = localStorage.getItem('bagrut_pe_unified_v1');
-        if (raw) { const p = JSON.parse(raw); state.theme = p.theme || 'light'; state.statusMap = p.statusMap || {}; }
+        if (raw) {
+          const p = JSON.parse(raw);
+          state.theme = p.theme || 'light';
+          state.statusMap = p.statusMap || {};
+          state.drafts = p.drafts || {};
+        }
       } catch(e) {}
       document.documentElement.setAttribute('data-theme', state.theme);
       document.getElementById('theme-btn').textContent = state.theme === 'dark' ? '☀️' : '🌙';
     }
     function saveState() {
-      try { localStorage.setItem('bagrut_pe_unified_v1', JSON.stringify({ theme: state.theme, statusMap: state.statusMap })); } catch(e) {}
+      try { localStorage.setItem('bagrut_pe_unified_v1', JSON.stringify({ theme: state.theme, statusMap: state.statusMap, drafts: state.drafts })); } catch(e) {}
     }
     function toggleTheme() {
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -377,14 +409,54 @@
     function setYear(y) { state.year = y; state.isolation = null; renderAll(); }
     function toggleMikudOnly() { state.mikudOnly = !state.mikudOnly; state.isolation = null; renderAll(); }
     function onSearch(v) { state.search = v; renderCards(); }
-    function toggleMikudAccordion() { document.getElementById('mikud-accordion').classList.toggle('open'); }
     function toggleIsolation(kind) { state.isolation = state.isolation === kind ? null : kind; renderAll(); }
     function clearIsolation() { state.isolation = null; renderAll(); }
+
+    function openMikudModal() { document.getElementById('mikud-modal').classList.add('open'); }
+    function closeMikudModal() { document.getElementById('mikud-modal').classList.remove('open'); }
 
     function setStatus(id, st) {
       if (state.statusMap[id] === st) delete state.statusMap[id]; else state.statusMap[id] = st;
       saveState(); renderAll();
       if (qotdItem && qotdItem.id === id) renderQotdModal();
+    }
+
+    function buildAnsHtml(q) {
+      const draftText = (state.drafts[q.id] || '').trim();
+      const compareHtml = draftText ? `<div class="compare-box"><strong>✏️ התשובה שלך (טיוטה):</strong>\n${esc(draftText)}</div>` : '';
+      return `${compareHtml}<strong>📖 מחוון רשמי:</strong>\n${esc(q.answer)}\n<small style="color:var(--muted)">מקור: ${esc(q.source)}</small>`;
+    }
+
+    function onDraftInput(id, val) {
+      if (val && val.trim().length > 0) state.drafts[id] = val;
+      else delete state.drafts[id];
+      saveState();
+
+      // Update green dot on card button
+      const dot = document.getElementById(`dot-${id}`);
+      if (dot) dot.classList.toggle('hidden', !(state.drafts[id] && state.drafts[id].trim()));
+
+      // Update comparison inside rubric drawer if rendered
+      const ansBox = document.getElementById(`d-ans-${id}`);
+      const q = DATA.find(x => x.id === id);
+      if (ansBox && q) ansBox.innerHTML = buildAnsHtml(q);
+
+      if (qotdItem && qotdItem.id === id) {
+        const qDot = document.getElementById('qotd-draft-dot');
+        if (qDot) qDot.innerHTML = (state.drafts[id] && state.drafts[id].trim()) ? '<span class="draft-dot"></span>' : '';
+        document.getElementById('qotd-box-ans').innerHTML = buildAnsHtml(qotdItem);
+      }
+    }
+
+    function toggleBulk(kind) {
+      bulkOpen[kind] = !bulkOpen[kind];
+      document.getElementById(`bulk-${kind}`).classList.toggle('active', bulkOpen[kind]);
+      document.querySelectorAll(`#cards-container .drawer-${kind === 'kw' ? 'kw' : kind}`).forEach(d => {
+        d.classList.toggle('open', bulkOpen[kind]);
+      });
+      document.querySelectorAll(`#cards-container .help-btn[data-kind="${kind}"]`).forEach(b => {
+        b.classList.toggle('open', bulkOpen[kind]);
+      });
     }
 
     function renderCards() {
@@ -399,6 +471,8 @@
       if (!list.length) { container.innerHTML = `<div class="q-card" style="text-align:center; padding:2rem;"><strong>לא נמצאו שאלות מתאימות לסינון.</strong></div>`; return; }
       container.innerHTML = list.map(q => {
         const st = state.statusMap[q.id] || '';
+        const draftVal = state.drafts[q.id] || '';
+        const hasDraft = draftVal.trim().length > 0;
         return `<article class="q-card ${st==='mastered'?'is-mastered':st==='review'?'is-review':''}">
           <div class="tags-row">
             <span class="tag tag-year">${q.year} · ${esc(q.section)}</span>
@@ -411,13 +485,18 @@
             <button type="button" class="track-btn review ${st==='review'?'active':''}" onclick="setStatus('${q.id}','review')">דורש חזרה 🔖</button>
           </div>
           <div class="help-row">
-            <button type="button" class="help-btn" onclick="toggleCardDrawer('${q.id}','hint',this)">💡 רמז</button>
-            <button type="button" class="help-btn" onclick="toggleCardDrawer('${q.id}','kw',this)">🔑 מילות מפתח</button>
-            <button type="button" class="help-btn" onclick="toggleCardDrawer('${q.id}','ans',this)">📖 מחוון רשמי מלא</button>
+            <button type="button" class="help-btn ${bulkOpen.hint?'open':''}" data-kind="hint" onclick="toggleCardDrawer('${q.id}','hint',this)">💡 רמז</button>
+            <button type="button" class="help-btn ${bulkOpen.kw?'open':''}" data-kind="kw" onclick="toggleCardDrawer('${q.id}','kw',this)">🔑 מילות מפתח</button>
+            <button type="button" class="help-btn ${bulkOpen.ans?'open':''}" data-kind="ans" onclick="toggleCardDrawer('${q.id}','ans',this)">📖 מחוון רשמי מלא</button>
+            <button type="button" class="help-btn ${bulkOpen.draft?'open':''}" data-kind="draft" onclick="toggleCardDrawer('${q.id}','draft',this)">✏️ טיוטה <span class="draft-dot ${hasDraft?'':'hidden'}" id="dot-${q.id}"></span></button>
           </div>
-          <div class="drawer drawer-hint" id="d-hint-${q.id}"><strong>רמז:</strong> ${esc(q.hint)}</div>
-          <div class="drawer drawer-kw" id="d-kw-${q.id}"><strong>מילות מפתח:</strong><div class="kw-pills">${q.keywords.map(k=>`<span class="kw-pill">${esc(k)}</span>`).join('')}</div></div>
-          <div class="drawer drawer-ans" id="d-ans-${q.id}"><strong>מחוון רשמי:</strong>\n${esc(q.answer)}\n<small style="color:var(--muted)">מקור: ${esc(q.source)}</small></div>
+          <div class="drawer drawer-hint ${bulkOpen.hint?'open':''}" id="d-hint-${q.id}"><strong>רמז:</strong> ${esc(q.hint)}</div>
+          <div class="drawer drawer-kw ${bulkOpen.kw?'open':''}" id="d-kw-${q.id}"><strong>מילות מפתח:</strong><div class="kw-pills">${q.keywords.map(k=>`<span class="kw-pill">${esc(k)}</span>`).join('')}</div></div>
+          <div class="drawer drawer-draft ${bulkOpen.draft?'open':''}" id="d-draft-${q.id}">
+            <strong>✏️ טיוטת תשובה עצמית (נשמרת אוטומטית):</strong>
+            <textarea class="draft-ta" placeholder="כתוב כאן את התשובה שלך לפני ההשוואה למחוון..." oninput="onDraftInput('${q.id}', this.value)">${esc(draftVal)}</textarea>
+          </div>
+          <div class="drawer drawer-ans ${bulkOpen.ans?'open':''}" id="d-ans-${q.id}">${buildAnsHtml(q)}</div>
         </article>`;
       }).join('');
     }
@@ -453,13 +532,17 @@
     function renderQotdModal() {
       if (!qotdItem) return;
       const st = state.statusMap[qotdItem.id] || '';
+      const draftVal = state.drafts[qotdItem.id] || '';
+      const hasDraft = draftVal.trim().length > 0;
       document.getElementById('qotd-tags').innerHTML = `<span class="tag tag-year">${qotdItem.year} · ${esc(qotdItem.section)}</span><span class="tag">${esc(qotdItem.topic)}</span><span class="tag ${qotdItem.mikud?'tag-mikud-in':'tag-mikud-out'}">${qotdItem.mikud?'🟢 במיקוד תשפ"ז':'🔴 ירד במיקוד'}</span>`;
       document.getElementById('qotd-body').textContent = qotdItem.question;
       document.getElementById('qotd-track').innerHTML = `<button type="button" class="track-btn mastered ${st==='mastered'?'active':''}" onclick="setStatus('${qotdItem.id}','mastered')">שולט בחומר ✅</button><button type="button" class="track-btn review ${st==='review'?'active':''}" onclick="setStatus('${qotdItem.id}','review')">דורש חזרה 🔖</button>`;
+      document.getElementById('qotd-draft-dot').innerHTML = hasDraft ? '<span class="draft-dot"></span>' : '';
       document.getElementById('qotd-box-hint').innerHTML = `<strong>רמז:</strong> ${esc(qotdItem.hint)}`;
       document.getElementById('qotd-box-kw').innerHTML = `<strong>מילות מפתח:</strong><div class="kw-pills">${qotdItem.keywords.map(k=>`<span class="kw-pill">${esc(k)}</span>`).join('')}</div>`;
-      document.getElementById('qotd-box-ans').innerHTML = `<strong>מחוון רשמי:</strong>\n${esc(qotdItem.answer)}`;
-      ['hint','kw','ans'].forEach(k => { document.getElementById('qotd-box-'+k).classList.remove('open'); document.getElementById('qotd-btn-'+k).classList.remove('open'); });
+      document.getElementById('qotd-box-draft').innerHTML = `<strong>✏️ טיוטה:</strong><textarea class="draft-ta" placeholder="כתוב כאן תשובה..." oninput="onDraftInput('${qotdItem.id}', this.value)">${esc(draftVal)}</textarea>`;
+      document.getElementById('qotd-box-ans').innerHTML = buildAnsHtml(qotdItem);
+      ['hint','kw','ans','draft'].forEach(k => { document.getElementById('qotd-box-'+k).classList.remove('open'); document.getElementById('qotd-btn-'+k).classList.remove('open'); });
     }
     function toggleQotdHelp(k) { const b = document.getElementById('qotd-box-'+k); document.getElementById('qotd-btn-'+k).classList.toggle('open', b.classList.toggle('open')); }
     function openQotdModal() { if (!qotdItem) pickQotd(false); document.getElementById('qotd-modal').classList.add('open'); }
