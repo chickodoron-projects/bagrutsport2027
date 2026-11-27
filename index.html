@@ -27,63 +27,104 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Heebo', system-ui, sans-serif; line-height: 1.55; overflow-x: clip; }
     button, input, select, textarea { font-family: inherit; color: inherit; }
+
+    /* Clean 2-row Sticky Header */
     .sticky-header {
       position: sticky; top: 0; z-index: 40; background: var(--surface);
-      border-bottom: 1px solid var(--border); padding: 0.5rem 0.75rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; box-shadow: var(--shadow);
+      border-bottom: 1px solid var(--border); padding: 0.45rem 0.65rem;
+      display: flex; flex-direction: column; gap: 0.4rem; box-shadow: var(--shadow);
     }
-    .header-right, .header-left { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
-    .brand-pill { font-weight: 800; font-size: 0.84rem; padding: 0.35rem 0.6rem; border-radius: 10px; background: var(--primary-soft); color: var(--primary); white-space: nowrap; }
-    .countdown-pill { font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.6rem; border-radius: 999px; background: var(--amber-soft); color: var(--amber); white-space: nowrap; }
+    .hdr-top { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; }
+    .hdr-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
+    .brand-pill { font-weight: 800; font-size: 0.84rem; padding: 0.3rem 0.6rem; border-radius: 9px; background: var(--primary-soft); color: var(--primary); white-space: nowrap; }
+    .countdown-pill {
+      font-weight: 700; font-size: 0.8rem; padding: 0.3rem 0.65rem; border-radius: 999px;
+      background: var(--amber-soft); color: var(--amber); white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
     .icon-btn, .hdr-btn {
-      min-height: 36px; padding: 0.3rem 0.65rem; border-radius: 10px;
+      min-height: 36px; padding: 0.25rem 0.55rem; border-radius: 10px;
       border: 1px solid var(--border); background: var(--surface-alt);
       font-weight: 700; font-size: 0.82rem; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; white-space: nowrap;
     }
     .hdr-btn.active { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
-    .app-main { max-width: 1100px; margin: 0 auto; padding: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .carousel-wrap { display: flex; align-items: center; gap: 0.4rem; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0.15rem 0; }
+
+    .app-main { max-width: 1100px; margin: 0 auto; padding: 0.65rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .carousel-wrap { display: flex; align-items: center; gap: 0.4rem; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0.1rem 0; }
     .carousel-wrap::-webkit-scrollbar { display: none; }
     .chip {
-      min-height: 38px; padding: 0.35rem 0.85rem; border-radius: 999px;
+      min-height: 36px; padding: 0.3rem 0.8rem; border-radius: 999px;
       border: 1px solid var(--border); background: var(--surface); color: var(--text);
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; flex-shrink: 0;
+      font-size: 0.84rem; font-weight: 600; cursor: pointer; flex-shrink: 0;
       display: inline-flex; align-items: center; gap: 0.3rem;
     }
     .chip.active { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
     .chip.status-mastered.active { background: var(--green); color: #fff; border-color: var(--green); }
     .chip.status-review.active { background: var(--amber); color: #fff; border-color: var(--amber); }
-    .tools-row { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
-    .bulk-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; padding: 0.45rem 0.65rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
-    .bulk-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-left: 0.25rem; }
-    .search-input { flex: 1 1 200px; min-height: 40px; padding: 0.4rem 0.85rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.92rem; }
+
+    .tools-row { display: flex; gap: 0.4rem; align-items: center; }
+    .search-input { flex: 1 1 140px; min-width: 0; min-height: 38px; padding: 0.35rem 0.75rem; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-size: 0.9rem; }
+
+    /* 4 Master Toggle Switches in 1 row */
+    .bulk-switches {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem;
+    }
+    .switch-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.4rem 0.25rem; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 0.28rem;
+      font-size: 0.76rem; font-weight: 700; color: var(--text);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .switch-card.active { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); }
+    .sw-track {
+      position: relative; width: 34px; height: 18px; border-radius: 999px;
+      background: var(--border); transition: background 0.2s; display: block;
+    }
+    .switch-card.active .sw-track { background: var(--primary); }
+    .sw-thumb {
+      position: absolute; top: 2px; left: 2px; width: 14px; height: 14px;
+      border-radius: 50%; background: #ffffff; transition: transform 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    .switch-card.active .sw-thumb { transform: translateX(16px); }
+
     .mikud-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.65rem; font-size: 0.88rem; }
     .mikud-col { background: var(--surface-alt); padding: 0.7rem; border-radius: 10px; }
     .mikud-col h4 { margin: 0 0 0.4rem; font-size: 0.92rem; }
     .m-in { color: var(--green); margin-bottom: 0.3rem; }
     .m-out { color: var(--red); }
-    .isolation-banner { background: var(--primary-soft); border: 1px solid var(--primary); border-radius: 12px; padding: 0.65rem 0.9rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
-    .cards-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 0.85rem; }
-    .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 0.7rem; }
+    .isolation-banner { background: var(--primary-soft); border: 1px solid var(--primary); border-radius: 12px; padding: 0.6rem 0.85rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+
+    .cards-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 0.8rem; }
+    .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.95rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 0.65rem; }
     .q-card.is-mastered { border-right: 4px solid var(--green); }
     .q-card.is-review { border-right: 4px solid var(--amber); }
     .q-card.sim-picked { border: 2px solid var(--primary); background: var(--surface); }
     .q-card.sim-unpicked { opacity: 0.78; }
     .tags-row { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
-    .tag { font-size: 0.75rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 999px; background: var(--surface-alt); color: var(--muted); }
+    .tag { font-size: 0.74rem; font-weight: 700; padding: 0.16rem 0.5rem; border-radius: 999px; background: var(--surface-alt); color: var(--muted); white-space: nowrap; }
     .tag-year { background: var(--primary-soft); color: var(--primary); }
     .tag-mikud-in { background: var(--green-soft); color: var(--green); }
     .tag-mikud-out { background: var(--red-soft); color: var(--red); }
-    .q-body { font-size: 0.98rem; font-weight: 500; white-space: pre-line; }
-    .track-row { display: flex; gap: 0.45rem; flex-wrap: wrap; }
-    .track-btn { flex: 1; min-height: 38px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-weight: 700; font-size: 0.84rem; cursor: pointer; }
+    .q-body { font-size: 0.97rem; font-weight: 500; white-space: pre-line; }
+    .track-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+    .track-btn { min-height: 36px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); font-weight: 700; font-size: 0.83rem; cursor: pointer; }
     .track-btn.mastered.active { background: var(--green-soft); color: var(--green); border-color: var(--green); }
     .track-btn.review.active { background: var(--amber-soft); color: var(--amber); border-color: var(--amber); }
-    .help-row { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-    .help-btn { min-height: 36px; padding: 0.25rem 0.65rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-alt); font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; }
+
+    /* 4 Card Action Buttons in 1 single row on iPhone */
+    .help-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.3rem; }
+    .help-btn {
+      min-height: 36px; padding: 0.2rem 0.2rem; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface-alt);
+      font-size: 0.77rem; font-weight: 700; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.2rem; white-space: nowrap;
+    }
     .help-btn.open { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
-    .draft-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; flex-shrink: 0; }
+    .draft-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; flex-shrink: 0; }
+
     .drawer { display: none; padding: 0.75rem; border-radius: 10px; font-size: 0.9rem; line-height: 1.6; border: 1px solid var(--border); }
     .drawer.open { display: block; }
     .drawer-hint { background: var(--amber-soft); }
@@ -94,6 +135,7 @@
     .compare-box { background: var(--primary-soft); border: 1px solid var(--primary); border-radius: 8px; padding: 0.6rem; margin-bottom: 0.65rem; white-space: pre-line; }
     .kw-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
     .kw-pill { background: var(--surface); border: 1px solid var(--border); padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+
     .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
     .modal-backdrop.open { display: flex; }
     .modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
@@ -101,6 +143,7 @@
     .modal-title { margin: 0; font-size: 1.15rem; font-weight: 800; }
     .close-circle { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface-alt); font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .modal-foot { display: flex; justify-content: space-between; gap: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.7rem; flex-wrap: wrap; }
+
     .sim-view { display: none; flex-direction: column; gap: 0.9rem; }
     .sim-view.open { display: flex; }
     .sim-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem; }
@@ -113,7 +156,7 @@
 
     @media print {
       body { background: #fff !important; color: #000 !important; }
-      .sticky-header, .carousel-wrap, .tools-row, .bulk-row, .isolation-banner,
+      .sticky-header, .carousel-wrap, .tools-row, .bulk-switches, .isolation-banner,
       .track-row, .help-row, .sim-bar, .modal-backdrop, .hdr-btn { display: none !important; }
       .print-header { display: block !important; border-bottom: 2px solid #000; padding-bottom: 0.5rem; margin-bottom: 1rem; }
       .app-main { max-width: 100%; padding: 0; }
@@ -126,15 +169,15 @@
 </head>
 <body>
   <header class="sticky-header">
-    <div class="header-right">
+    <div class="hdr-top">
       <span class="brand-pill">041381</span>
+      <span class="countdown-pill" id="countdown-pill">⏳ -- ימים · --:--:--</span>
+      <button type="button" class="icon-btn" id="theme-btn" onclick="toggleTheme()" aria-label="מצב תצוגה">🌙</button>
+    </div>
+    <div class="hdr-nav">
       <button type="button" class="hdr-btn" onclick="openQotdModal()">שאלת היום 🎲</button>
       <button type="button" class="hdr-btn" id="btn-sim-mode" onclick="toggleSimMode()">סימולטור 📝</button>
       <button type="button" class="hdr-btn" onclick="openMikudModal()">מיקוד תשפ"ז 📋</button>
-    </div>
-    <div class="header-left">
-      <span class="countdown-pill" id="countdown-pill">⏳ -- ימים לבגרות</span>
-      <button type="button" class="icon-btn" id="theme-btn" onclick="toggleTheme()" aria-label="מצב תצוגה">🌙</button>
     </div>
   </header>
 
@@ -156,19 +199,29 @@
       </div>
 
       <div class="tools-row">
-        <input type="search" class="search-input" id="search-input" placeholder="חיפוש חופשי בשאלה, מילת מפתח או מחוון..." oninput="onSearch(this.value)">
-        <span class="tag" id="results-count">0 שאלות</span>
-        <button type="button" class="hdr-btn" onclick="printBank(false)">🖨️ הדפס שאלות</button>
-        <button type="button" class="hdr-btn" onclick="printBank(true)">🖨️ הדפס + מחוונים</button>
+        <input type="search" class="search-input" id="search-input" placeholder="חיפוש בשאלה, מילת מפתח או מחוון..." oninput="onSearch(this.value)">
+        <span class="tag" id="results-count">0</span>
+        <button type="button" class="hdr-btn" onclick="printBank()">🖨️ הדפס</button>
       </div>
 
-      <!-- כפתורים ראשיים לפתיחה/סגירה גלובלית -->
-      <div class="bulk-row">
-        <span class="bulk-label">פתח/סגור לכולם:</span>
-        <button type="button" class="hdr-btn" id="bulk-hint" onclick="toggleBulk('hint')">💡 רמז</button>
-        <button type="button" class="hdr-btn" id="bulk-kw" onclick="toggleBulk('kw')">🔑 מילות מפתח</button>
-        <button type="button" class="hdr-btn" id="bulk-ans" onclick="toggleBulk('ans')">📖 מחוון רשמי מלא</button>
-        <button type="button" class="hdr-btn" id="bulk-draft" onclick="toggleBulk('draft')">✏️ טיוטה</button>
+      <!-- 4 מתגי הזזה (Switches) בשורה אחת -->
+      <div class="bulk-switches">
+        <button type="button" class="switch-card" id="bulk-hint" onclick="toggleBulk('hint')" aria-pressed="false">
+          <span>💡 רמז</span>
+          <span class="sw-track"><span class="sw-thumb"></span></span>
+        </button>
+        <button type="button" class="switch-card" id="bulk-kw" onclick="toggleBulk('kw')" aria-pressed="false">
+          <span>🔑 מפתח</span>
+          <span class="sw-track"><span class="sw-thumb"></span></span>
+        </button>
+        <button type="button" class="switch-card" id="bulk-ans" onclick="toggleBulk('ans')" aria-pressed="false">
+          <span>📖 מחוון</span>
+          <span class="sw-track"><span class="sw-thumb"></span></span>
+        </button>
+        <button type="button" class="switch-card" id="bulk-draft" onclick="toggleBulk('draft')" aria-pressed="false">
+          <span>✏️ טיוטה</span>
+          <span class="sw-track"><span class="sw-thumb"></span></span>
+        </button>
       </div>
 
       <div class="isolation-banner hidden" id="isolation-banner">
@@ -189,7 +242,7 @@
           <button type="button" class="hdr-btn active" id="sim-mode-full" onclick="setSimMode('full')">📝 בגרות אמיתית (100 נק')</button>
           <button type="button" class="hdr-btn" id="sim-mode-topic" onclick="setSimMode('topic')">🎯 בוחן לפי נושא</button>
           <span class="sim-timer" id="sim-timer">90:00</span>
-          <button type="button" class="hdr-btn" onclick="printSim()">🖨️ הדפס מבחן / PDF</button>
+          <button type="button" class="hdr-btn" onclick="printSim()">🖨️ הדפס מבחן</button>
           <button type="button" class="hdr-btn" onclick="toggleSimMode()">חזרה למאגר</button>
         </div>
       </div>
@@ -220,7 +273,6 @@
     </section>
   </main>
 
-  <!-- MIKUD MODAL -->
   <div class="modal-backdrop" id="mikud-modal" onclick="if(event.target===this) closeMikudModal()">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mikud-modal-title">
       <div class="modal-head">
@@ -250,7 +302,6 @@
     </div>
   </div>
 
-  <!-- QOTD MODAL -->
   <div class="modal-backdrop" id="qotd-modal" onclick="if(event.target===this) closeQotdModal()">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="qotd-modal-title">
       <div class="modal-head">
@@ -262,8 +313,8 @@
       <div class="track-row" id="qotd-track"></div>
       <div class="help-row">
         <button type="button" class="help-btn" id="qotd-btn-hint" onclick="toggleQotdHelp('hint')">💡 רמז</button>
-        <button type="button" class="help-btn" id="qotd-btn-kw" onclick="toggleQotdHelp('kw')">🔑 מילות מפתח</button>
-        <button type="button" class="help-btn" id="qotd-btn-ans" onclick="toggleQotdHelp('ans')">📖 מחוון רשמי מלא</button>
+        <button type="button" class="help-btn" id="qotd-btn-kw" onclick="toggleQotdHelp('kw')">🔑 מפתח</button>
+        <button type="button" class="help-btn" id="qotd-btn-ans" onclick="toggleQotdHelp('ans')">📖 מחוון</button>
         <button type="button" class="help-btn" id="qotd-btn-draft" onclick="toggleQotdHelp('draft')">✏️ טיוטה <span id="qotd-draft-dot"></span></button>
       </div>
       <div class="drawer drawer-hint" id="qotd-box-hint"></div>
@@ -353,8 +404,13 @@
       saveState();
     }
     function updateCountdown() {
-      const days = Math.max(0, Math.floor((new Date('2027-05-05T09:00:00').getTime() - Date.now()) / 86400000));
-      document.getElementById('countdown-pill').textContent = `⏳ ${days} ימים לבגרות`;
+      const target = new Date('2027-05-05T09:00:00').getTime();
+      const diff = Math.max(0, target - Date.now());
+      const d = Math.floor(diff / 86400000);
+      const h = String(Math.floor((diff / 3600000) % 24)).padStart(2, '0');
+      const m = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+      const s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+      document.getElementById('countdown-pill').innerHTML = `⏳ ${d} ימים · <bdi dir="ltr">${h}:${m}:${s}</bdi>`;
     }
     function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
     function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
@@ -432,11 +488,9 @@
       else delete state.drafts[id];
       saveState();
 
-      // Update green dot on card button
       const dot = document.getElementById(`dot-${id}`);
       if (dot) dot.classList.toggle('hidden', !(state.drafts[id] && state.drafts[id].trim()));
 
-      // Update comparison inside rubric drawer if rendered
       const ansBox = document.getElementById(`d-ans-${id}`);
       const q = DATA.find(x => x.id === id);
       if (ansBox && q) ansBox.innerHTML = buildAnsHtml(q);
@@ -450,8 +504,10 @@
 
     function toggleBulk(kind) {
       bulkOpen[kind] = !bulkOpen[kind];
-      document.getElementById(`bulk-${kind}`).classList.toggle('active', bulkOpen[kind]);
-      document.querySelectorAll(`#cards-container .drawer-${kind === 'kw' ? 'kw' : kind}`).forEach(d => {
+      const sw = document.getElementById(`bulk-${kind}`);
+      sw.classList.toggle('active', bulkOpen[kind]);
+      sw.setAttribute('aria-pressed', bulkOpen[kind] ? 'true' : 'false');
+      document.querySelectorAll(`#cards-container .drawer-${kind}`).forEach(d => {
         d.classList.toggle('open', bulkOpen[kind]);
       });
       document.querySelectorAll(`#cards-container .help-btn[data-kind="${kind}"]`).forEach(b => {
@@ -466,7 +522,7 @@
         banner.classList.remove('hidden');
         document.getElementById('isolation-text').textContent = state.isolation === 'mastered' ? `מצב בידוד: מציג אך ורק ${list.length} שאלות "שולט בחומר ✅"` : `מצב בידוד: מציג אך ורק ${list.length} שאלות "דורש חזרה 🔖"`;
       } else { banner.classList.add('hidden'); }
-      document.getElementById('results-count').textContent = `${list.length} שאלות מוצגות`;
+      document.getElementById('results-count').textContent = `${list.length} שאלות`;
       const container = document.getElementById('cards-container');
       if (!list.length) { container.innerHTML = `<div class="q-card" style="text-align:center; padding:2rem;"><strong>לא נמצאו שאלות מתאימות לסינון.</strong></div>`; return; }
       container.innerHTML = list.map(q => {
@@ -486,8 +542,8 @@
           </div>
           <div class="help-row">
             <button type="button" class="help-btn ${bulkOpen.hint?'open':''}" data-kind="hint" onclick="toggleCardDrawer('${q.id}','hint',this)">💡 רמז</button>
-            <button type="button" class="help-btn ${bulkOpen.kw?'open':''}" data-kind="kw" onclick="toggleCardDrawer('${q.id}','kw',this)">🔑 מילות מפתח</button>
-            <button type="button" class="help-btn ${bulkOpen.ans?'open':''}" data-kind="ans" onclick="toggleCardDrawer('${q.id}','ans',this)">📖 מחוון רשמי מלא</button>
+            <button type="button" class="help-btn ${bulkOpen.kw?'open':''}" data-kind="kw" onclick="toggleCardDrawer('${q.id}','kw',this)">🔑 מפתח</button>
+            <button type="button" class="help-btn ${bulkOpen.ans?'open':''}" data-kind="ans" onclick="toggleCardDrawer('${q.id}','ans',this)">📖 מחוון</button>
             <button type="button" class="help-btn ${bulkOpen.draft?'open':''}" data-kind="draft" onclick="toggleCardDrawer('${q.id}','draft',this)">✏️ טיוטה <span class="draft-dot ${hasDraft?'':'hidden'}" id="dot-${q.id}"></span></button>
           </div>
           <div class="drawer drawer-hint ${bulkOpen.hint?'open':''}" id="d-hint-${q.id}"><strong>רמז:</strong> ${esc(q.hint)}</div>
@@ -504,18 +560,14 @@
     function toggleCardDrawer(id, kind, btn) { const box = document.getElementById(`d-${kind}-${id}`); btn.classList.toggle('open', box.classList.toggle('open')); }
     function renderAll() { renderCarousels(); renderCards(); }
 
-    function printBank(withRubric) {
+    function printBank() {
+      const withRubric = bulkOpen.ans;
       const lbl = state.isolation === 'review' ? 'שאלות המסומנות לחזרה 🔖'
         : state.isolation === 'mastered' ? 'שאלות המסומנות כשליטה ✅'
         : 'מאגר שאלות בגרות בחינוך גופני (041381)';
       document.getElementById('print-title').textContent = lbl;
       document.getElementById('print-sub').textContent = document.getElementById('results-count').textContent + (withRubric ? ' · כולל מחוונים רשמיים' : ' · דף שאלות לתרגול');
-      const drawers = document.querySelectorAll('#cards-container .drawer-ans');
-      const prevStates = Array.from(drawers).map(d => d.classList.contains('open'));
-      if (withRubric) drawers.forEach(d => d.classList.add('open'));
-      else drawers.forEach(d => d.classList.remove('open'));
       window.print();
-      drawers.forEach((d, i) => d.classList.toggle('open', prevStates[i]));
     }
 
     function printSim() {
@@ -634,7 +686,7 @@
     }
     function submitSim() { if(simTimerInt)clearInterval(simTimerInt); simSubmitted = true; renderSim(); }
 
-    loadState(); updateCountdown(); setInterval(updateCountdown, 60000); populateSimTopics(); pickQotd(false); renderAll();
+    loadState(); updateCountdown(); setInterval(updateCountdown, 1000); populateSimTopics(); pickQotd(false); renderAll();
   </script>
 </body>
 </html>
